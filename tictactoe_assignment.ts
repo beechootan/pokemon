@@ -171,10 +171,10 @@ while (startNewGame) {
       let i = -1
       let j = -1
       while (i != 1 && i != 2 && i != 3 && j != 1 && j != 2 && j != 3) {
-        while (i < 1 || i > 3) {
+        while (i != 1 && i != 2 && i != 3) {
           i = parseInt(question('Please select row 1 or 2 or 3: '))
         }
-        while (j < 1 || j > 3) {
+        while (j != 1 && j != 2 && j != 3) {
           j = parseInt(question('Please select column 1 or 2 or 3: '))
         }
         if (isEmpty(board, (i - 1), (j - 1), mark)) {
