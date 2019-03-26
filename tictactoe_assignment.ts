@@ -135,6 +135,7 @@ while (startNewGame) {
           i = Math.round(Math.random() * 2)
           j = Math.round(Math.random() * 2)
           if (isEmpty(board, i, j, mark)) {
+            console.log("It's computer's turn. ")
             printboard()
           } else {
             i = -1
