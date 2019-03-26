@@ -45,7 +45,7 @@ let P2HP = null
 //declare variable to check whose turn
 let isP1Turn = true
 
-//declare variable for skill effects
+//declare variable for skill effects and skill's damage
 let P1Poison = 5
 let P2Poison = 5
 let P1Sleep = false
@@ -66,6 +66,7 @@ while (selectedPokemon === null) {
   let ansPokemon = question('Select your pokemon to fight\n')
 
   // check if wrong number
+  //To-do: need to check if input is not digit
   if (parseInt(ansPokemon) > pokemon.length) {
     console.log("You entered a nonexistent pokemon number")
   } else {
@@ -74,14 +75,14 @@ while (selectedPokemon === null) {
   }
 }
 
-//select opponent pokemon
-let randomOpp = Math.round(Math.random() * pokemon.length)
+//select opponent pokemon by random 
+let randomOpp = Math.round(Math.random() * (pokemon.length - 1))
 player2 = pokemon[randomOpp].name
 
 //display the pokemon selected by Player 1.
 console.log("You have sent " + player1)
 
-//display the opponent selected by computer
+//display the opponent selected by computer / player 2
 console.log("You have encounter your opponent " + player2)
 
 //assign pokemon HP to player 1 and 2
@@ -97,7 +98,7 @@ console.log('-----------------------------')
 
 //check if anyone die
 while (P1HP > 0 && P2HP > 0) {
-  //assign attacher name and defender name
+
   //check whose turn
   if (isP1Turn) {
     //check if player 2 is using sleep effect
@@ -120,6 +121,7 @@ while (P1HP > 0 && P2HP > 0) {
       while (selectedSkill === null) {
         ansSkill = question('Select your skill to fight\n')
         // if wrong number
+        // To-do: check if input is digit
         if (parseInt(ansSkill) > pokemon[selectedPokemon].skill.length) {
           console.log("You entered a nonexistent skill")
         } else {
@@ -167,7 +169,7 @@ while (P1HP > 0 && P2HP > 0) {
 
     } else {
       //auto select skill for player 2  
-      let randomSkill = Math.round(Math.random() * pokemon[randomOpp].skill.length) - 1
+      let randomSkill = Math.round(Math.random() * (pokemon[randomOpp].skill.length - 1))
 
       //check if the skill effect is Poison and set the count to 0
       if (pokemon[randomOpp].skill[randomSkill].effects = 'Poison') {
@@ -182,7 +184,7 @@ while (P1HP > 0 && P2HP > 0) {
       //display skill used by player 2
       console.log(player2 + " has uses " + pokemon[randomOpp].skill[randomSkill].name)
 
-      //check 
+      //calculate damage 
       if (P2Poison <= 4) {
         //damage = Math.round(Math.random() * pokemon[randomOpp].skill[randomSkill].dmg) * 10
         damage = pokemon[randomOpp].skill[randomSkill].dmg * 10
